@@ -5,21 +5,29 @@ using MiPrimeraAPI_StefanJativa.Repositories;
 
 namespace MiPrimeraAPI_StefanJativa.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class RestaurantesController : ControllerBase
+    [Route("api/[controller]")]//Asigna la ruta base
+    [ApiController]//Abilita el controladro a la Api
+    public class RestaurantesController : ControllerBase //Hereda de control base lo que esta pro deffecto en visual code
     {
-        [HttpGet]
+        [HttpGet]//Responde a las solicitudes de get
         [Route("InformacionRestaurante")]
+
+
+
+
+        //Metodo DevuelveRestaurante
+        //Devuelve solamente por el id buscado
         public ActionResult DevuelveRestaurante(int id)
         {
             try
             {
+
+                //Instancia de repositoryrestaurante 
                 RestauranteRepository repo = new RestauranteRepository();
                 var restaurantes = repo.DevuelveRestaurantes();
 
 
-                if (restaurantes.Any(x=>x.Id == id ))
+                if (restaurantes.Any(x => x.Id == id))
                 {
                     var info_restaurante = restaurantes.Find(x => x.Id == id);
 
@@ -30,8 +38,11 @@ namespace MiPrimeraAPI_StefanJativa.Controllers
                     return NotFound();
                 }
 
-                
+
             }
+
+            //Manejo de errores
+            //Regresa un http 400 bad request
             catch (Exception e)
             {
                 return BadRequest();
@@ -39,10 +50,16 @@ namespace MiPrimeraAPI_StefanJativa.Controllers
             
         }
 
+
+        //Metodo DevuelveListado
+        //Devuelve la lista completa del repositorio
+
         [HttpGet]
         [Route("InformacionRestaurantes")]
         public List<Restaurante> DevuelveListadoRestaurante()
         {
+
+            
             RestauranteRepository repo = new RestauranteRepository();
             return repo.DevuelveRestaurantes();
         }

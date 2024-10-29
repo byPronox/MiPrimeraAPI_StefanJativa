@@ -5,13 +5,17 @@ namespace MiPrimeraAPI_StefanJativa.Repositories
     public class RestauranteRepository
     {
 
+        //Metodo Devuelve el resutaurante
         //Llama a la clase del modelo Restaurante
         public List<Restaurante> DevuelveRestaurantes()
         {
+
+            //Crea Lista tipo restaurante
             List<Restaurante> restaurantes = new List<Restaurante>();
             
             
 
+            //Crea los objetos restaurate 1 y 2
             Restaurante restaurante = new Restaurante
             {
                 Id = 1,
@@ -30,30 +34,19 @@ namespace MiPrimeraAPI_StefanJativa.Repositories
                 AceptaMascotas = true
             };
 
+
+            //Ambos objetos creados anteriormente se almacenan en la lista Restaurantes
             restaurantes.Add(restaurante);
             restaurantes.Add(restaurante2);
+
+            //Retorna la lista restaurantes
             return restaurantes;
 
         }
 
 
 
-        //Llama a la clase del modelo Restaurante
-        public Restaurante DevuelveRestaurante()
-        {
-            Restaurante restaurante2 = new Restaurante();
-            restaurante2.Nombre = "McDonals";
-
-            Restaurante restaurante = new Restaurante
-            {
-                Id = 1,
-                Nombre = "McDonals",
-                CostoComercial = 100000,
-                Direccion = "Orellana",
-                AceptaMascotas = false
-            };
-            return restaurante;
-        }
+        
 
 
 
